@@ -1,0 +1,141 @@
+body {
+    margin: 0;
+    padding: 0;
+}
+
+.header {
+    display: block;
+    width: 100%;
+    background: lightgrey;
+    padding: 10px;
+    margin: 0;
+    position: relative;
+    box-sizing: border-box;
+}
+
+.title {
+    font-size: 1.5em;
+    font-weight: bold;
+    display: inline-block;
+}
+
+.menu-items {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    float: right;
+}
+
+.menu-items a {
+    text-decoration: none;
+    color: black;
+    font-weight: bold;
+    font-size: 1.5em;
+    /*margin: 0 10px;*/
+    padding: 10px;
+    box-sizing: border-box;
+}
+
+.menu-items a.active {
+    color: red;
+}
+
+.images {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.images img {
+    display: inline-block;
+    width: 300px;
+    height: 300px;
+    box-sizing: border-box;
+    margin: 5px;
+}
+
+.images img:nth-child(1) {
+    width: 450px;
+}
+
+.logos {
+    display: block;
+    text-align: center;
+    margin-top: 20px;
+}
+
+.logo-item {
+    display: inline-block;
+    text-align: center;
+    margin: 0 30px;
+    vertical-align: top;
+}
+
+.logo-img img {
+    border-radius: 50%;
+    width: 150px;
+    height: 150px;
+}
+
+.logo-text {
+    display: block;
+    font-size: 20px;
+    text-align: center;
+    width: 150px;
+    margin-top: 10px;
+}
+
+.items {
+    display: block;
+    margin: 100px auto;
+    box-sizing: border-box;
+    width: 80%;
+    height: auto;
+}
+
+.item {
+    display: block;
+    margin-top: 50px;
+    width: 100%;
+}
+
+.item img {
+    display: block;
+    float: right;
+}
+
+.item-title {
+    font-size: 24px;
+    align-self: center;
+    display: inline;
+}
+
+.item-header {
+    display: block;
+    text-align: center;
+}
+
+.item-text {
+    display: block;
+}
+
+.item-text span {
+    font-size: 20px;
+}
+
+.footer {
+    display: block;
+    background: gray;
+    width: 100%;
+    padding: 10px;
+    height: auto;
+}
+
+.footer .title {
+    font-size: 20px;
+    font-weight: normal;
+}
+
+.footer .contacts {
+    float: right;
+    font-size: 20px;
+}
