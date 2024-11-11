@@ -47,14 +47,15 @@ body {
 
 .images img {
     display: inline-block;
-    width: 300px;
-    height: 300px;
+    max-width: 300px;
+    max-height: 300px;
     box-sizing: border-box;
     margin: 5px;
+    vertical-align: middle;
 }
 
 .images img:nth-child(1) {
-    width: 450px;
+    max-width: 300px;
 }
 
 .logos {
