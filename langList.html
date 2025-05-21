@@ -3,564 +3,71 @@
 <head>
     <meta charset="UTF-8">
     <title>Топ 50</title>
+    <link rel="stylesheet" href="styles/list-style.css">
+    <script src="js/data.js"></script>
+    <script src="js/main.js"></script>
+    <script src="js/table.js"></script>
+    <script src="js/filter.js"></script>
+    <script src="js/sort.js"></script>
 </head>
 <body>
-    <a href="mainPage.html">Самые популярные языки программирования</a>
-    <br>
-    <a href="langList.html"><font size="5">Топ 50 языков программирования</font></a>
-    <hr>
+<a href="mainPage.html">Самые популярные языки программирования</a>
+<br>
+<a href="langList.html"><font size="5">Топ 50 языков программирования</font></a>
+<hr>
+<form id="filter">
+    <p>
+        <label for="language">Название языка:</label>
+        <input type="text" id="language">
+    </p>
+    <p>
+        <label for="creators">Создатели:</label>
+        <input type="text" id="creators">
+    </p>
+    <p>
+        <label for="yearFrom">Год создания: </label>
+        от <input type="number" id="yearFrom">
+        до <input type="number" id="yearTo">
+    </p>
+    <p>
+        <label for="countUsersFrom">Кол-во пользователей:</label>
+        от <input type="number" id="countUsersFrom">
+        до <input type="number" id="countUsersTo">
+    </p>
+    <p>
+        <label for="speedWorkFrom">Средняя скорость работы:</label>
+        от <input type="number" id="speedWorkFrom">
+        до <input type="number" id="speedWorkTo">
+    </p>
+    <p>
+        <input type="button" value="Найти">
+        <input type="button" value="Очистить фильтры">
+    </p>
+</form>
 
-    <details>
-        <summary>График</summary>
-        <form>
-            <fieldset>
-                <legend><b>Аргумент</b></legend>
-                <input type="radio" name="argue" value="0">Создатель<br>
-                <input type="radio" name="argue" value="2">Год
-            </fieldset><p></p>
-            <fieldset>
-                <legend><b>Значения</b><br></legend>
-                <input type="checkbox" name="value" value="0">Кол-во пользователей<br>
-                <input type="checkbox" name="value" value="1">Скорость работы<br>
-            </fieldset>
-            <p><input type="button" value="Построить"></p>
-        </form>
-    </details>
-    <details>
-        <summary>Фильтр</summary>
-        <form>
-            <fieldset>
-                <legend><b>Поля</b></legend>
-                <table>
-                    <tr><td>Название языка:</td><td><input type="text"></td></tr>
-                    <tr><td>Создатели:</td><td><input type="text"></td></tr>
-                    <tr><td>Год создания: </td><td>от <input type="text"> до <input type="text"></td></tr>
-                    <tr><td>Тип исполнения:</td><td><input type="text"></td></tr>
-                    <tr><td>Кол-во пользователей:</td><td>от <input type="text"> до <input type="text"></td></tr>
-                    <tr><td>Средняя скорость работы:</td><td>от <input type="text"> до <input type="text"></td></tr>
-                </table>
-            </fieldset>
-            <p><input type="button" value="Найти"></p>
-        </form>
-    </details>
-    <details>
-        <summary>Сортировка</summary>
-        <form>
-            <fieldset>
-                <legend><b>Уровни</b></legend>
-                <table border="0">
-                    <tr><td>Первый уровень:</td><td><select name="bool1">
-                        <option value="0">Нет</option>
-                        <option value="1">Название языка</option>
-                        <option value="2">Создатели</option>
-                        <option value="3">Год создания</option>
-                        <option value="4">Тип исполнения</option>
-                        <option value="5">Кол-во пользователей</option>
-                        <option value="6">Скорость работы</option>
-                    </select></td><td>по убыванию?<input type="checkbox" name="sort"></td></tr>
-                    <tr><td>Второй уровень:</td><td><select name="bool2">
-                        <option value="0">Нет</option>
-                        <option value="1">Название языка</option>
-                        <option value="2">Создатели</option>
-                        <option value="3">Год создания</option>
-                        <option value="4">Тип исполнения</option>
-                        <option value="5">Кол-во пользователей</option>
-                        <option value="6">Скорость работы</option>
-                    </select></td><td>по убыванию?<input type="checkbox" name="sort"></td></tr>
-                    <tr><td>Третий уровень:</td><td><select name="bool3">
-                        <option value="0">Нет</option>
-                        <option value="1">Название языка</option>
-                        <option value="2">Создатели</option>
-                        <option value="3">Год создания</option>
-                        <option value="4">Тип исполнения</option>
-                        <option value="5">Кол-во пользователей</option>
-                        <option value="6">Скорость работы</option>
-                    </select></td><td>по убыванию?<input type="checkbox" name="sort"></td></tr>
-                </table>
-            </fieldset>
-            <p><input type="button" value="Сортировать"></p>
-        </form>
-    </details>
+<form id="sort">
+    <p> Сортировать по</p>
+    <p>
+        <select id="fieldsFirst">
+        </select>
+        по убыванию? <input type="checkbox" id="fieldsFirstDesc">
+    </p>
+    <p>
+        <select id="fieldsSecond">
+        </select>
+        по убыванию? <input type="checkbox" id="fieldsSecondDesc">
+    </p>
+    <p>
+        <select id="fieldsThird">
+        </select>
+        по убыванию? <input type="checkbox" id="fieldsThirdDesc">
+    </p>
+    <input type="button" value="Сортировать">
+    <input type="button" value="Сбросить сортировку">
+</form>
 
-    <table  border="1" cellpadding = "5" cellspacing="0">
-        <thead>
-            <tr>
-                <th>Место</th>
-                <th>Название</th>
-                <th>Год создания</th>
-                <th>Создатели</th>
-                <th>Тип исполнения</th>
-                <th>Кол-во пользователей</th>
-                <th>Скорость работы, s</th>
-            </tr>
-        </thead>
-        <tbody align="center">
-            <tr>
-                <td>1</td>
-                <td>Golang</td>
-                <td>2009</td>
-                <td>Google, Роб Пайк, Кен Томпсон</td>
-                <td>Компилируемый</td>
-                <td>10000000</td>
-                <td>0.9</td>
-            </tr>
-            <tr>
-                <td>2</td>
-                <td>Python</td>
-                <td>1991</td>
-                <td>Гвидо ван Россум</td>
-                <td>Интерпретируемый</td>
-                <td>20000000</td>
-                <td>3</td>
-            </tr>
-            <tr>
-                <td>3</td>
-                <td>С++</td>
-                <td>1983</td>
-                <td>Бьёрн Страуструп</td>
-                <td>Компилируемый</td>
-                <td>1000000</td>
-                <td>0.6</td>
-            </tr>
-            <tr>
-                <td>4</td>
-                <td>С#</td>
-                <td>2001</td>
-                <td>Андерс Хейлсберг</td>
-                <td>Компилируемый</td>
-                <td>13000000</td>
-                <td>1.7</td>
-            </tr>
-            <tr>
-                <td>5</td>
-                <td>С</td>
-                <td>1972</td>
-                <td>Деннис Ритчи</td>
-                <td>Компилируемый</td>
-                <td>100000</td>
-                <td>0.3</td>
-            </tr>
-            <tr>
-                <td>6</td>
-                <td>Java</td>
-                <td>1995</td>
-                <td>Деннис Ритчи</td>
-                <td>Компилируемый</td>
-                <td>16000000</td>
-                <td>1.9</td>
-            </tr>
-            <tr>
-                <td>7</td>
-                <td>JavaScript</td>
-                <td>1995</td>
-                <td>Брендан Эйх</td>
-                <td>Интерпретируемый</td>
-                <td>19000000</td>
-                <td>3.8</td>
-            </tr>
-            <tr>
-                <td>8</td>
-                <td>TypeScript</td>
-                <td>2012</td>
-                <td>Microsoft</td>
-                <td>Компиляция в Js</td>
-                <td>19000000</td>
-                <td>3.6</td>
-            </tr>
-            <tr>
-                <td>9</td>
-                <td>Kotlin</td>
-                <td>2011</td>
-                <td>JetBrains</td>
-                <td>Компилируемый</td>
-                <td>10000100</td>
-                <td>2.0</td>
-            </tr>
-            <tr>
-                <td>10</td>
-                <td>Rust</td>
-                <td>2006</td>
-                <td>Грэйдон Хор</td>
-                <td>Компилируемый</td>
-                <td>800000</td>
-                <td>0.8</td>
-            </tr>
-            <tr>
-                <td>11</td>
-                <td>Ruby</td>
-                <td>1995</td>
-                <td>Юкихиро Мацумото</td>
-                <td>Интерпретируемый</td>
-                <td>400000</td>
-                <td>2.2</td>
-            </tr>
-            <tr>
-                <td>12</td>
-                <td>PHP</td>
-                <td>1995</td>
-                <td>Расмус Лердорф</td>
-                <td>Интерпретируемый</td>
-                <td>10500000</td>
-                <td>2.6</td>
-            </tr>
-            <tr>
-                <td>13</td>
-                <td>Swift</td>
-                <td>2014</td>
-                <td>Крис Латтнер, Apple</td>
-                <td>Компилируемый</td>
-                <td>700000</td>
-                <td>2.5</td>
-            </tr>
-            <tr>
-                <td>14</td>
-                <td>Dart</td>
-                <td>2011</td>
-                <td>Google</td>
-                <td>Компилируемый</td>
-                <td>200000</td>
-                <td>2.8</td>
-            </tr>
-            <tr>
-                <td>15</td>
-                <td>Objective-C</td>
-                <td>1983</td>
-                <td>Бред Кокс</td>
-                <td>Компилируемый</td>
-                <td>10000</td>
-                <td>2.2</td>
-            </tr>
-            <tr>
-                <td>16</td>
-                <td>R</td>
-                <td>1993</td>
-                <td>Росс Айхэка, Роберт Джентельмен</td>
-                <td>Интерпретируемый</td>
-                <td>600000</td>
-                <td>2.1</td>
-            </tr>
-            <tr>
-                <td>16</td>
-                <td>SQL</td>
-                <td>1974</td>
-                <td>Дональд Чемберлин, Реймонд Бойс</td>
-                <td>Интерпретируемый</td>
-                <td>40000</td>
-                <td>1.9</td>
-            </tr>
-            <tr>
-                <td>17</td>
-                <td>F#</td>
-                <td>2005</td>
-                <td>Microsoft Research</td>
-                <td>Компилируемый</td>
-                <td>10000</td>
-                <td>3.2</td>
-            </tr>
-            <tr>
-                <td>18</td>
-                <td>Matlab</td>
-                <td>1984</td>
-                <td>The MathWorks и Клив Б. Молер</td>
-                <td>Интерпретируемый</td>
-                <td>20000</td>
-                <td>4.1</td>
-            </tr>
-            <tr>
-                <td>19</td>
-                <td>Scratch</td>
-                <td>2007</td>
-                <td>Митчелл Резник</td>
-                <td>Интерпретируемый</td>
-                <td>40000</td>
-                <td>4.5</td>
-            </tr>
-            <tr>
-                <td>20</td>
-                <td>Visual Basic</td>
-                <td>1991</td>
-                <td>Майкрософт</td>
-                <td>Компилируемый, интерпретируемый</td>
-                <td>60000</td>
-                <td>2.7</td>
-            </tr>
-            <tr>
-                <td>21</td>
-                <td>Fortran</td>
-                <td>1957</td>
-                <td>IBM, Джон Бэкус</td>
-                <td>Компилируемый</td>
-                <td>34000</td>
-                <td>0.4</td>
-            </tr>
-            <tr>
-                <td>22</td>
-                <td>Delphi</td>
-                <td>1995</td>
-                <td>Андерс Хейлсберг</td>
-                <td>Компилируемый</td>
-                <td>4000</td>
-                <td>3.7</td>
-            </tr>
-            <tr>
-                <td>23</td>
-                <td>Pascal</td>
-                <td>1970</td>
-                <td>Никлаус Вирт</td>
-                <td>Компилируемый</td>
-                <td>5000</td>
-                <td>3.1</td>
-            </tr>
-            <tr>
-                <td>24</td>
-                <td>Cobol</td>
-                <td>1959</td>
-                <td>Грейс Хоппер,
-                    Вильям Селден,
-                    Гертруда Тирни,
-                    Говард Бромберг,
-                    Говард Дискаунт,
-                    Вернон Ривз,
-                    Джин Е. Саммет</td>
-                <td>Компилируемый</td>
-                <td>20400</td>
-                <td>2.22</td>
-            </tr>
-            <tr>
-                <td>25</td>
-                <td>Scala</td>
-                <td>2004</td>
-                <td>Мартин Одерски</td>
-                <td>Компилируемый</td>
-                <td>84000</td>
-                <td>2.45</td>
-            </tr>
-            <tr>
-                <td>26</td>
-                <td>Julia</td>
-                <td>2009</td>
-                <td>Джефф Безансон, Алан Эдельман, Стефан Карпински и Вирал Шах</td>
-                <td>Интерпретируемый</td>
-                <td>91000</td>
-                <td>2.9</td>
-            </tr>
-            <tr>
-                <td>27</td>
-                <td>Perl</td>
-                <td>1987</td>
-                <td>Ларри Уолл и The Perl Foundation</td>
-                <td>Интерпретируемый</td>
-                <td>56000</td>
-                <td>3.33</td>
-            </tr>
-            <tr>
-                <td>28</td>
-                <td>Lua</td>
-                <td>1993</td>
-                <td>Роберту Иерузалимски</td>
-                <td>Интерпретируемый</td>
-                <td>80000</td>
-                <td>3.73</td>
-            </tr>
-            <tr>
-                <td>29</td>
-                <td>Lisp</td>
-                <td>1958</td>
-                <td>Джон Маккарти</td>
-                <td>Интерпретируемый</td>
-                <td>99000</td>
-                <td>0.9</td>
-            </tr>
-            <tr>
-                <td>30</td>
-                <td>VBScript</td>
-                <td>1996</td>
-                <td>Майкрасовфт</td>
-                <td>Интерпретируемый</td>
-                <td>1000</td>
-                <td>1.999</td>
-            </tr>
-            <tr>
-                <td>31</td>
-                <td>ABAP</td>
-                <td>1983</td>
-                <td>SAP SE</td>
-                <td>Интерпретируемый</td>
-                <td>2000</td>
-                <td>3.999</td>
-            </tr>
-            <tr>
-                <td>32</td>
-                <td>D</td>
-                <td>2001</td>
-                <td>Уолтер Брайт</td>
-                <td>Интерпретируемый</td>
-                <td>1400</td>
-                <td>2.499</td>
-            </tr>
-            <tr>
-                <td>33</td>
-                <td>Logo</td>
-                <td>1967</td>
-                <td>Сеймур Пейперт</td>
-                <td>Интерпретируемый</td>
-                <td>6000</td>
-                <td>2.8</td>
-            </tr>
-            <tr>
-                <td>34</td>
-                <td>PowerShell</td>
-                <td>2016</td>
-                <td>Майкрасофт</td>
-                <td>Интерпретируемый</td>
-                <td>7120</td>
-                <td>2.5</td>
-            </tr>
-            <tr>
-                <td>35</td>
-                <td>GAMS</td>
-                <td>1976</td>
-                <td>GAMS Development Corporation</td>
-                <td>Интерпретируемый</td>
-                <td>500</td>
-                <td>4.0</td>
-            </tr>
-            <tr>
-                <td>36</td>
-                <td>Awk</td>
-                <td>1977</td>
-                <td>Альфред Ахо</td>
-                <td>Компилируемый</td>
-                <td>500</td>
-                <td>5.1</td>
-            </tr>
-            <tr>
-                <td>37</td>
-                <td>1C</td>
-                <td>1996</td>
-                <td>1C</td>
-                <td>Компилируемый</td>
-                <td>230</td>
-                <td>1.989</td>
-            </tr>
-            <tr>
-                <td>38</td>
-                <td>Erlang</td>
-                <td>1986</td>
-                <td>Джо Армстронг</td>
-                <td>Компилируемый</td>
-                <td>111</td>
-                <td>1.239</td>
-            </tr>
-            <tr>
-                <td>39</td>
-                <td>Assembly language</td>
-                <td>1949</td>
-                <td>Кэтлин Бут</td>
-                <td>Ассемблируемый</td>
-                <td>750</td>
-                <td>3.119</td>
-            </tr>
-            <tr>
-                <td>40</td>
-                <td>SAS</td>
-                <td>1976</td>
-                <td>Anthony James Barr</td>
-                <td>Интерпретируемый</td>
-                <td>91</td>
-                <td>3.1394</td>
-            </tr>
-            <tr>
-                <td>41</td>
-                <td>Prolog</td>
-                <td>1972</td>
-                <td>Ален Колмероэ</td>
-                <td>Интерпретируемый</td>
-                <td>73</td>
-                <td>2.129</td>
-            </tr>
-            <tr>
-                <td>42</td>
-                <td>Solidity</td>
-                <td>2014</td>
-                <td>Кристиан Райтвизнер</td>
-                <td>Интерпретируемый</td>
-                <td>39</td>
-                <td>2.384</td>
-            </tr>
-            <tr>
-                <td>43</td>
-                <td>Mojo</td>
-                <td>2023</td>
-                <td>Крис Латтнер</td>
-                <td>Интерпретируемый</td>
-                <td>59</td>
-                <td>3.839</td>
-            </tr>
-            <tr>
-                <td>44</td>
-                <td>Elixir</td>
-                <td>2011</td>
-                <td>Жозе Валим</td>
-                <td>Компилируемый</td>
-                <td>71</td>
-                <td>3.1392</td>
-            </tr>
-            <tr>
-                <td>45</td>
-                <td>RPG</td>
-                <td>1960</td>
-                <td>IBM</td>
-                <td>Интерпретируемый</td>
-                <td>123</td>
-                <td>5.22</td>
-            </tr>
-            <tr>
-                <td>46</td>
-                <td>PL/SQL</td>
-                <td>1992</td>
-                <td>Oracle</td>
-                <td>Интерпретируемый</td>
-                <td>99</td>
-                <td>7.999</td>
-            </tr>
-            <tr>
-                <td>47</td>
-                <td>Ada</td>
-                <td>1980</td>
-                <td>Жан Ишбиа</td>
-                <td>Компилируемый</td>
-                <td>10</td>
-                <td>38.494</td>
-            </tr>
-            <tr>
-                <td>48</td>
-                <td>Fox Pro</td>
-                <td>1984</td>
-                <td>Майкрософт</td>
-                <td>Интерпретируемый</td>
-                <td>5</td>
-                <td>2.119</td>
-            </tr>
-            <tr>
-                <td>49</td>
-                <td>Transact-SQL</td>
-                <td>1999</td>
-                <td>Майкрософт</td>
-                <td>Интерпретируемый</td>
-                <td>4</td>
-                <td>3.819</td>
-            </tr>
-            <tr>
-                <td>50</td>
-                <td>Classic Visual Basic</td>
-                <td>1991</td>
-                <td>Майкрософт</td>
-                <td>Интерпретируемый</td>
-                <td>2</td>
-                <td>4.459</td>
-            </tr>
-        </tbody>
-    </table>
+<table id="list">
+</table>
+
 </body>
 </html>
