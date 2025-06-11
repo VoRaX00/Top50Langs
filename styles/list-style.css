@@ -7,6 +7,18 @@ body {
     padding: 0;
 }
 
+svg {
+    width: 800px;
+    height: 400px;
+}
+svg path, line {
+    fill: none;
+    width: 1px;
+}
+svg text {
+    font: 8px Verdana;
+}
+
 #filter, #sort {
     margin: 20px auto;
     padding: 20px;

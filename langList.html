@@ -4,17 +4,46 @@
     <meta charset="UTF-8">
     <title>Топ 50</title>
     <link rel="stylesheet" href="styles/list-style.css">
+    <script src="http://d3js.org/d3.v7.min.js"></script>
     <script src="js/data.js"></script>
     <script src="js/main.js"></script>
     <script src="js/table.js"></script>
     <script src="js/filter.js"></script>
     <script src="js/sort.js"></script>
+    <script src="js/chart.js"></script>
 </head>
 <body>
 <a href="mainPage.html">Самые популярные языки программирования</a>
 <br>
 <a href="langList.html"><font size="5">Топ 50 языков программирования</font></a>
 <hr>
+
+<h3>Список самых высоких зданий</h3>
+<form id="data">
+    <p>Значение по оси OX<br>
+        <label><input type="radio" name="ox" value="Скорость работы, с" id="firstR" checked>Скорость работы,
+            с</label><br>
+        <label><input type="radio" name="ox" value="Год создания" id="secondR">Год создания</label>
+    </p>
+    <p>Значение по оси OY<br>
+        <input type="checkbox" id="maxUsers">
+        <label for="maxUsers" id="tcheck1">Максимальное количество пользователей</label><br>
+        <input type="checkbox" id="minUsers">
+        <label for="minUsers" id="tcheck2">Минимальное количество пользователей</label>
+    </p>
+    <label for="type">Тип графика</label>
+    <select id="type" name="type">
+        <option value="gist">Гистограмма</option>
+        <option value="point">Точечный</option>
+        <option value="chart">График</option>
+    </select><br><br>
+    <button type="button" id="draw">Построить</button>
+    <p>
+        <span id="error-message" class="error"></span></p>
+</form>
+
+<svg></svg>
+
 <form id="filter">
     <p>
         <label for="language">Название языка:</label>
